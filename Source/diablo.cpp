@@ -102,6 +102,7 @@ BOOL StartGame(BOOL bNewGame, BOOL bSinglePlayer)
 		if (bNewGame || !gbValidSaveFile) {
 			InitLevels();
 			InitQuests();
+			// 初始化传送门
 			InitPortals();
 			InitDungMsgs(myplr);
 		}
@@ -1873,6 +1874,8 @@ void game_loop(BOOL bStartup)
 {
 	int i;
 
+	// TODO:
+	// 动态控制帧数？
 	i = bStartup ? 60 : 3;
 
 	while (i--) {
