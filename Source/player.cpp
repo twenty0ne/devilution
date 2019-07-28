@@ -1076,6 +1076,7 @@ void StartStand(int pnum, int dir)
 	}
 
 	if (!plr[pnum]._pInvincible || plr[pnum]._pHitPoints || pnum != myplr) {
+		// 如果没有加载STAND动画
 		if (!(plr[pnum]._pGFXLoad & PFILE_STAND)) {
 			LoadPlrGFX(pnum, PFILE_STAND);
 		}
@@ -2078,16 +2079,20 @@ BOOL PM_DoWalk(int pnum)
 	}
 
 	if (plr[pnum]._pVar8 == vel) {
+		// 清掉 x,y 位置的玩家编号
 		dPlayer[plr[pnum].WorldX][plr[pnum].WorldY] = 0;
 		plr[pnum].WorldX += plr[pnum]._pVar1;
 		plr[pnum].WorldY += plr[pnum]._pVar2;
+		// 将新位置 x,y 设置为玩家编号
 		dPlayer[plr[pnum].WorldX][plr[pnum].WorldY] = pnum + 1;
 
 		if (leveltype != DTYPE_TOWN) {
+			// 让灯光跟随玩家
 			ChangeLightXY(plr[pnum]._plid, plr[pnum].WorldX, plr[pnum].WorldY);
 			ChangeVisionXY(plr[pnum]._pvid, plr[pnum].WorldX, plr[pnum].WorldY);
 		}
 
+		// 视角跟随玩家操作的角色
 		if (pnum == myplr && ScrollInfo._sdir) {
 			ViewX = plr[pnum].WorldX - ScrollInfo._sdx;
 			ViewY = plr[pnum].WorldY - ScrollInfo._sdy;
@@ -2169,6 +2174,10 @@ BOOL PM_DoWalk3(int pnum)
 		app_fatal("PM_DoWalk3: illegal player %d", pnum);
 	}
 
+	// 当动画播放到第4帧
+	// 或者行走动画有8帧并且播放到第7帧
+	// 或者行走动画没有8帧并且播放到第4帧
+	// 播放行走音效
 	if (plr[pnum]._pAnimFrame == 3
 	    || (plr[pnum]._pWFrames == 8 && plr[pnum]._pAnimFrame == 7)
 	    || (plr[pnum]._pWFrames != 8 && plr[pnum]._pAnimFrame == 4)) {
@@ -3349,10 +3358,12 @@ void ProcessPlayers()
 		app_fatal("ProcessPlayers: illegal player %d", myplr);
 	}
 
+	// TODO: pLvlLoad ?
 	if (plr[myplr].pLvlLoad > 0) {
 		plr[myplr].pLvlLoad--;
 	}
 
+	// 使用帧delay简单
 	if (sfxdelay > 0) {
 		sfxdelay--;
 		if (sfxdelay == 0) {

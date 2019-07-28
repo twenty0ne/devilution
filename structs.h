@@ -170,7 +170,7 @@ typedef struct ItemStruct {
 //////////////////////////////////////////////////
 
 typedef struct PlayerStruct {
-	int _pmode;
+	int _pmode; // 玩家状态，PM_STAND, PM_WALK ...
 	char walkpath[25];
 	BOOLEAN plractive;
 	int destAction;
@@ -225,7 +225,7 @@ typedef struct PlayerStruct {
 	char _pSplTHotKey[4];
 	int _pwtype;
 	unsigned char _pBlockFlag;
-	unsigned char _pInvincible;
+	unsigned char _pInvincible; // 无敌
 	char _pLightRad;
 	unsigned char _pLvlChanging;
 	char _pName[PLR_NAME_LEN];
@@ -249,7 +249,7 @@ typedef struct PlayerStruct {
 	int _pBaseToBlk;
 	int _pHPBase;
 	int _pMaxHPBase;
-	int _pHitPoints;
+	int _pHitPoints; // hp
 	int _pMaxHP;
 	int _pHPPer;
 	int _pManaBase;
@@ -278,12 +278,12 @@ typedef struct PlayerStruct {
 	int _pVar8;
 	unsigned char _pLvlVisited[NUMLEVELS];
 	unsigned char _pSLvlVisited[NUMLEVELS]; // only 10 used
-	int _pGFXLoad;
+	int _pGFXLoad; // 标记已经加载的玩家动画
 	unsigned char *_pNAnim[8];
 	int _pNFrames;
 	int _pNWidth;
 	unsigned char *_pWAnim[8];
-	int _pWFrames;
+	int _pWFrames; // 行走动画帧数
 	int _pWWidth;
 	unsigned char *_pAAnim[8];
 	int _pAFrames;
@@ -318,7 +318,7 @@ typedef struct PlayerStruct {
 	int _pIBonusAC;
 	int _pIBonusDamMod;
 	unsigned __int64 _pISpells;
-	int _pIFlags;
+	int _pIFlags; // item effect
 	int _pIGetHit;
 	char _pISplLvlAdd;
 	char _pISplCost;
