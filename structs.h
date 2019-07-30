@@ -279,6 +279,7 @@ typedef struct PlayerStruct {
 	unsigned char _pLvlVisited[NUMLEVELS];
 	unsigned char _pSLvlVisited[NUMLEVELS]; // only 10 used
 	int _pGFXLoad; // 标记已经加载的玩家动画
+	// 动画后面的8表示方向
 	unsigned char *_pNAnim[8];
 	int _pNFrames;
 	int _pNWidth;
@@ -286,7 +287,7 @@ typedef struct PlayerStruct {
 	int _pWFrames; // 行走动画帧数
 	int _pWWidth;
 	unsigned char *_pAAnim[8];
-	int _pAFrames;
+	int _pAFrames; // 攻击动画
 	int _pAWidth;
 	int _pAFNum;
 	unsigned char *_pLAnim[8];
@@ -298,7 +299,7 @@ typedef struct PlayerStruct {
 	unsigned char *_pHAnim[8];
 	int _pHFrames;
 	int _pHWidth;
-	unsigned char *_pDAnim[8];
+	unsigned char *_pDAnim[8]; // 死亡动画
 	int _pDFrames;
 	int _pDWidth;
 	unsigned char *_pBAnim[8];

@@ -36,7 +36,7 @@ ScrollStruct ScrollInfo;
 BYTE *pDungeonCels;
 int SpeedFrameTbl[128][16];
 THEME_LOC themeLoc[MAXTHEMES];
-char dPlayer[MAXDUNX][MAXDUNY]; // 地图上该位置玩家的编号
+char dPlayer[MAXDUNX][MAXDUNY]; // 地图上该位置玩家的编号，pnum + 1
 int dword_5C2FF8;   // weak
 int dword_5C2FFC;   // weak
 int scr_pix_width;  // weak

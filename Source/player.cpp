@@ -1532,6 +1532,7 @@ void FixPlrWalkTags(int pnum)
 		app_fatal("FixPlrWalkTags: illegal player %d", pnum);
 	}
 
+	// 将玩家旧位置九格内的地图玩家数据清空
 	pp = pnum + 1;
 	pn = -(pnum + 1);
 	dx = plr[pnum]._poldx;
@@ -1544,6 +1545,8 @@ void FixPlrWalkTags(int pnum)
 		}
 	}
 
+	// TODO:
+	// 为什么之后只有2个位置清空玩家 flag
 	if (dx >= 0 && dx < MAXDUNX - 1 && dy >= 0 && dy < MAXDUNY - 1) {
 		dFlags[dx + 1][dy] &= ~DFLAG_PLAYER;
 		dFlags[dx][dy + 1] &= ~DFLAG_PLAYER;
@@ -1656,6 +1659,7 @@ void StartPlayerKill(int pnum, int earflag)
 		app_fatal("StartPlayerKill: illegal player %d", pnum);
 	}
 
+	// 死亡播放声音
 	if (plr[pnum]._pClass == PC_WARRIOR) {
 		PlaySfxLoc(PS_DEAD, plr[pnum].WorldX, plr[pnum].WorldY); // BUGFIX: should use `PS_WARR71` like other classes
 	} else if (plr[pnum]._pClass == PC_ROGUE) {
@@ -1664,6 +1668,8 @@ void StartPlayerKill(int pnum, int earflag)
 		PlaySfxLoc(PS_MAGE71, plr[pnum].WorldX, plr[pnum].WorldY);
 	}
 
+	// TODO:
+	// 为什么需要重设 Animas ?
 	if (plr[pnum]._pgfxnum) {
 		plr[pnum]._pgfxnum = 0;
 		plr[pnum]._pGFXLoad = 0;
@@ -1679,7 +1685,7 @@ void StartPlayerKill(int pnum, int earflag)
 
 	plr[pnum]._pBlockFlag = FALSE;
 	plr[pnum]._pmode = PM_DEATH;
-	plr[pnum]._pInvincible = TRUE;
+	plr[pnum]._pInvincible = TRUE; // 死亡的时候置为无敌状态
 	SetPlayerHitPoints(pnum, 0);
 	plr[pnum]._pVar8 = 1;
 
@@ -1897,6 +1903,7 @@ void SyncPlrKill(int pnum, int earflag)
 {
 	int ma, i;
 
+	// currlevel == 0 特殊处理
 	if (plr[pnum]._pHitPoints == 0 && currlevel == 0) {
 		SetPlayerHitPoints(pnum, 64);
 		return;
@@ -1904,6 +1911,8 @@ void SyncPlrKill(int pnum, int earflag)
 
 	for (i = 0; i < nummissiles; i++) {
 		ma = missileactive[i];
+		// TODO:
+		// 魔法护盾抵御致死？
 		if (missile[ma]._mitype == MIS_MANASHIELD && missile[ma]._misource == pnum && missile[ma]._miDelFlag == FALSE) {
 			if (earflag != -1) {
 				missile[ma]._miVar8 = earflag;
