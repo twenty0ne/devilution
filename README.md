@@ -1,3 +1,9 @@
+# NOTE
+fork form https://github.com/diasurgical/devilution.git  
+add some notes to learn  
+[jump to note](./NOTE.md)
+
+---
 [![Build Status](https://travis-ci.org/diasurgical/devilution.svg?branch=master)](https://travis-ci.org/diasurgical/devilution)
 [![Build status](https://ci.appveyor.com/api/projects/status/ssk0xjhoka1uu940?svg=true)](https://ci.appveyor.com/project/galaxyhaxz/devilution)
 [![Build status](https://img.shields.io/github/downloads/diasurgical/devilution/total.svg)](https://github.com/diasurgical/devilution/releases)
