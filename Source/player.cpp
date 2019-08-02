@@ -1805,6 +1805,8 @@ void DropHalfPlayersGold(int pnum)
 		app_fatal("DropHalfPlayersGold: illegal player %d", pnum);
 	}
 
+	// TODO:
+	// why /2
 	hGold = plr[pnum]._pGold >> 1;
 	for (i = 0; i < MAXBELTITEMS && hGold > 0; i++) {
 		if (plr[pnum].SpdList[i]._itype == ITYPE_GOLD && plr[pnum].SpdList[i]._ivalue != 5000) {
