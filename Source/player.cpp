@@ -1561,6 +1561,7 @@ void RemovePlrFromMap(int pnum)
 	pp = pnum + 1;
 	pn = -(pnum + 1);
 
+	// 9格内清楚玩家信息
 	for (y = 1; y < MAXDUNY; y++)
 		for (x = 1; x < MAXDUNX; x++)
 			if (dPlayer[x][y - 1] == pn || dPlayer[x - 1][y] == pn)
@@ -1653,6 +1654,7 @@ void StartPlayerKill(int pnum, int earflag)
 		NetSendCmdParam1(TRUE, CMD_PLRDEAD, earflag);
 	}
 
+	// level 16 是玩家最高等级
 	diablolevel = gbMaxPlayers > 1 && plr[pnum].plrlevel == 16;
 
 	if ((DWORD)pnum >= MAX_PLRS) {
@@ -1689,6 +1691,8 @@ void StartPlayerKill(int pnum, int earflag)
 	SetPlayerHitPoints(pnum, 0);
 	plr[pnum]._pVar8 = 1;
 
+	// TODO:
+	// 清除其他玩家的装备
 	if (pnum != myplr && !earflag && !diablolevel) {
 		for (i = 0; i < NUM_INVLOC; i++) {
 			plr[pnum].InvBody[i]._itype = ITYPE_NONE;
@@ -1696,21 +1700,26 @@ void StartPlayerKill(int pnum, int earflag)
 		CalcPlrInv(pnum, FALSE);
 	}
 
+	// TODO:
+	// == currlevel ?
 	if (plr[pnum].plrlevel == currlevel) {
 		FixPlayerLocation(pnum, plr[pnum]._pdir);
 		RemovePlrFromMap(pnum);
 		dFlags[plr[pnum].WorldX][plr[pnum].WorldY] |= DFLAG_DEAD_PLAYER;
 		SetPlayerOld(pnum);
 
+		// 如果是玩家操作的角色
 		if (pnum == myplr) {
 			drawhpflag = TRUE;
 			deathdelay = 30;
 
 			if (pcurs >= CURSOR_FIRSTITEM) {
+				// 重新创建玩家手握物品
 				PlrDeadItem(pnum, &plr[pnum].HoldItem, 0, 0);
 				SetCursor_(CURSOR_HAND);
 			}
 
+			// 非最高等级
 			if (!diablolevel) {
 				DropHalfPlayersGold(pnum);
 				if (earflag != -1) {

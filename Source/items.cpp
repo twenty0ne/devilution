@@ -946,6 +946,7 @@ void CreatePlrItems(int p)
 	CalcPlrItemVals(p, FALSE);
 }
 
+// 检查地图上该位置是否空余
 BOOL ItemSpaceOk(int i, int j)
 {
 	int oi;
@@ -963,6 +964,7 @@ BOOL ItemSpaceOk(int i, int j)
 		return FALSE;
 
 	if (dObject[i][j]) {
+		// oi - object 的索引
 		oi = dObject[i][j] > 0 ? dObject[i][j] - 1 : -(dObject[i][j] + 1);
 		if (object[oi]._oSolidFlag)
 			return FALSE;
