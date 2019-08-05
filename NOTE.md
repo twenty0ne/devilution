@@ -9,4 +9,5 @@ diablo.cpp
 
 SyncPlrKill -> StartPlayerKill -> CMD_PLRDEAD
 
+ProcessPlayers
 PM_DoWalk

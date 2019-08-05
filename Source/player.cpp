@@ -1082,6 +1082,7 @@ void StartStand(int pnum, int dir)
 		}
 
 		NewPlrAnim(pnum, plr[pnum]._pNAnim[dir], plr[pnum]._pNFrames, 3, plr[pnum]._pNWidth);
+		// change _pmode
 		plr[pnum]._pmode = PM_STAND;
 		FixPlayerLocation(pnum, dir);
 		FixPlrWalkTags(pnum);
@@ -1098,6 +1099,7 @@ void StartWalkStand(int pnum)
 		app_fatal("StartWalkStand: illegal player %d", pnum);
 	}
 
+	// PM_STAND = 0
 	plr[pnum]._pmode = 0;
 	plr[pnum]._px = plr[pnum].WorldX;
 	plr[pnum]._py = plr[pnum].WorldY;
@@ -2087,6 +2089,7 @@ BOOL PM_DoWalk(int pnum)
 		app_fatal("PM_DoWalk: illegal player %d", pnum);
 	}
 
+	// 特定帧播放音效
 	if (plr[pnum]._pAnimFrame == 3
 	    || (plr[pnum]._pWFrames == 8 && plr[pnum]._pAnimFrame == 7)
 	    || (plr[pnum]._pWFrames != 8 && plr[pnum]._pAnimFrame == 4)) {
@@ -2101,6 +2104,7 @@ BOOL PM_DoWalk(int pnum)
 	if (plr[pnum]._pVar8 == vel) {
 		// 清掉 x,y 位置的玩家编号
 		dPlayer[plr[pnum].WorldX][plr[pnum].WorldY] = 0;
+		// _pVar1, _pVar2 应该是行走时 x,y 方向速度
 		plr[pnum].WorldX += plr[pnum]._pVar1;
 		plr[pnum].WorldY += plr[pnum]._pVar2;
 		// 将新位置 x,y 设置为玩家编号
@@ -2121,6 +2125,7 @@ BOOL PM_DoWalk(int pnum)
 		if (plr[pnum].walkpath[0] != WALK_NONE) {
 			StartWalkStand(pnum);
 		} else {
+			// if walkpath[0] == WALK_NONE
 			StartStand(pnum, plr[pnum]._pVar3);
 		}
 
@@ -3417,6 +3422,8 @@ void ProcessPlayers()
 				}
 			}
 
+			// tplayer 用于控制在 PM_A 中切换到另外一个 PM_B
+			// 马上进行 PM_B 的更新
 			tplayer = FALSE;
 			do {
 				switch (plr[pnum]._pmode) {
