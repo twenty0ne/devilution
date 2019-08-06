@@ -171,7 +171,7 @@ typedef struct ItemStruct {
 
 typedef struct PlayerStruct {
 	int _pmode; // 玩家状态，PM_STAND, PM_WALK ...
-	char walkpath[25];
+	char walkpath[25]; // WALK_N, WALK_S ... 方向
 	BOOLEAN plractive;
 	int destAction;
 	int destParam1;

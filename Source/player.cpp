@@ -996,6 +996,8 @@ BOOL PlrDirOK(int pnum, int dir)
 		return FALSE;
 	}
 
+	// TODO:
+	// 为什么只有 DIR_E / DIR_W ?
 	isOk = TRUE;
 	if (dir == DIR_E) {
 		isOk = !SolidLoc(px, py + 1) && !(dFlags[px][py + 1] & DFLAG_PLAYER);
@@ -3520,6 +3522,7 @@ void ClrPlrPath(int pnum)
 	memset(plr[pnum].walkpath, WALK_NONE, sizeof(plr[pnum].walkpath));
 }
 
+// 该位置是否可达
 BOOL PosOkPlayer(int pnum, int px, int py)
 {
 	BOOL PosOK;

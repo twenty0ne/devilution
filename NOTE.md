@@ -11,3 +11,8 @@ SyncPlrKill -> StartPlayerKill -> CMD_PLRDEAD
 
 ProcessPlayers
 PM_DoWalk
+
+PM_WALK:
+plr[pnum]._pVar1 = xadd; // 1 or -1
+plr[pnum]._pVar2 = yadd; // 1 or -1
+plr[pnum]._pVar3 = EndDir; // DIR_W or DIR_E ...
