@@ -1167,6 +1167,9 @@ void PM_ChangeOffset(int pnum)
 	}
 
 	plr[pnum]._pVar8++;
+	// 除以8因为 pxvel/pyvel 是一个乘以 8 之后的结果
+	// 没有采用 float，而是 int，可能是为了加快计算
+	// 或者网络同步的时候消除因为 float 导致的不确定性
 	px = plr[pnum]._pVar6 >> 8;
 	py = plr[pnum]._pVar7 >> 8;
 
@@ -2101,10 +2104,13 @@ BOOL PM_DoWalk(int pnum)
 		vel = PWVel[3][plr[pnum]._pClass];
 	}
 
+	// pVar8 在 PM_ChangeOffset 进行累加
+	// 当到达 vel(比如8帧) 的时候到达目标地点
+	// 8 帧就能到达目的地？
 	if (plr[pnum]._pVar8 == vel) {
 		// 清掉 x,y 位置的玩家编号
 		dPlayer[plr[pnum].WorldX][plr[pnum].WorldY] = 0;
-		// _pVar1, _pVar2 应该是行走时 x,y 方向速度
+		// _pVar1, _pVar2 应该是行走时 x,y 方向速度 ？
 		plr[pnum].WorldX += plr[pnum]._pVar1;
 		plr[pnum].WorldY += plr[pnum]._pVar2;
 		// 将新位置 x,y 设置为玩家编号
@@ -2137,6 +2143,7 @@ BOOL PM_DoWalk(int pnum)
 		return TRUE;
 	}
 
+	// 在没有到达位置之前
 	PM_ChangeOffset(pnum);
 	return FALSE;
 }
@@ -3461,6 +3468,7 @@ void ProcessPlayers()
 					tplayer = PM_DoNewLvl(pnum);
 					break;
 				}
+				// 核心，每帧都在执行
 				CheckNewPath(pnum);
 			} while (tplayer);
 
