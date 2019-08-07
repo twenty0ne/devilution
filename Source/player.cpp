@@ -3110,6 +3110,8 @@ void CheckNewPath(int pnum)
 			if (x <= 1 && y <= 1) {
 				d = GetDirection(plr[pnum]._px, plr[pnum]._py, monster[i]._mfutx, monster[i]._mfuty);
 				if (monster[i].mtalkmsg && monster[i].mtalkmsg != QUEST_VILE14) {
+					// TODO:
+					// 为什么没有一个 ACTION_TALK
 					TalktoMonster(i);
 				} else {
 					StartAttack(pnum, d);

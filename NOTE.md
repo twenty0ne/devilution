@@ -18,5 +18,9 @@ plr[pnum]._pVar1 = xadd; // 1 or -1
 plr[pnum]._pVar2 = yadd; // 1 or -1
 plr[pnum]._pVar3 = EndDir; // DIR_W or DIR_E ...
 
+MODE 和 ACTION 是不冲突的
+比如要执行 ACTION_PICKUPITEM
+PM_WALK 并不会打断
+
 TODO:
 Q: plr.px/py WorldX, WorldY 有什么区别

@@ -670,7 +670,7 @@ typedef struct ObjectStruct {
 	int _oAnimWidth;
 	int _oAnimWidth2;
 	BOOL _oDelFlag;
-	char _oBreak; // check
+	char _oBreak; // check // 是否可以破坏
 	BOOL _oSolidFlag;
 	BOOL _oMissFlag;
 	char _oSelFlag; // check
