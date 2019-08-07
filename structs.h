@@ -144,7 +144,7 @@ typedef struct ItemStruct {
 	int _iPLGetHit;
 	int _iPLLight;
 	char _iSplLvlAdd;
-	char _iRequest;
+	char _iRequest; // 标记是否被玩家拾取
 	int _iUid;
 	int _iFMinDam;
 	int _iFMaxDam;

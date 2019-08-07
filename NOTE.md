@@ -22,5 +22,8 @@ MODE 和 ACTION 是不冲突的
 比如要执行 ACTION_PICKUPITEM
 PM_WALK 并不会打断
 
+NetSendCmdXXX
+这块如何处理发往自己的消息
+
 TODO:
 Q: plr.px/py WorldX, WorldY 有什么区别

@@ -2359,6 +2359,8 @@ int GetRndSeed()
 // 52B97C: using guessed type int sglGameSeed;
 // 52B998: using guessed type int SeedCount;
 
+// TODO:
+// idx 的作用？
 int random(BYTE idx, int v)
 {
 	if (v <= 0)

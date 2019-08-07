@@ -615,6 +615,7 @@ void TownerTalk(int first, int t)
 }
 // 6AAC18: using guessed type int storeflag;
 
+// 城镇居民 NPC
 void TalkToTowner(int p, int t)
 {
 	int i, dx, dy, rv1, rv2, rv3;
