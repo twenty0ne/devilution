@@ -283,11 +283,11 @@ typedef struct PlayerStruct {
 	unsigned char *_pNAnim[8];
 	int _pNFrames;
 	int _pNWidth;
-	unsigned char *_pWAnim[8];
+	unsigned char *_pWAnim[8]; // 8 方向行走动画
 	int _pWFrames; // 行走动画帧数
 	int _pWWidth;
-	unsigned char *_pAAnim[8];
-	int _pAFrames; // 攻击动画
+	unsigned char *_pAAnim[8]; // 8 方向攻击动画
+	int _pAFrames; // 攻击动画帧数
 	int _pAWidth;
 	int _pAFNum;
 	unsigned char *_pLAnim[8];
@@ -558,7 +558,7 @@ typedef struct MonsterStruct { // note: missing field _mAFNum
 	int _mxvel;
 	int _myvel;
 	int _mdir;
-	int _menemy;
+	int _menemy; // 玩家 pnum
 	unsigned char _menemyx;
 	unsigned char _menemyy;
 	short falign_52; // probably _mAFNum (unused)
@@ -579,7 +579,7 @@ typedef struct MonsterStruct { // note: missing field _mAFNum
 	int _mVar8;
 	int _mmaxhp;
 	int _mhitpoints;
-	unsigned char _mAi;
+	unsigned char _mAi; // AI id: _mai_id
 	unsigned char _mint;
 	short falign_9A;
 	int _mFlags;
@@ -605,7 +605,7 @@ typedef struct MonsterStruct { // note: missing field _mAFNum
 	unsigned char mArmorClass;
 	char falign_CB;
 	unsigned short mMagicRes;
-	int mtalkmsg;
+	int mtalkmsg; // _speech_id
 	unsigned char leader;
 	unsigned char leaderflag;
 	unsigned char packsize;

@@ -5414,6 +5414,7 @@ void TalktoMonster(int i)
 	Monst = &monster[i];
 	pnum = Monst->_menemy;
 	Monst->_mmode = MM_TALK;
+	// 特殊 Quest 任务处理
 	if (Monst->_mAi == AI_SNOTSPIL || Monst->_mAi == AI_LACHDAN) {
 		if (QuestStatus(QTYPE_BOL) && quests[QTYPE_BOL]._qvar1 == 2 && PlrHasItem(pnum, IDI_BANNER, &itm)) {
 			RemoveInvItem(pnum, itm);

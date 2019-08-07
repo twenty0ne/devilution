@@ -3008,6 +3008,8 @@ void CheckNewPath(int pnum)
 		MakePlrPath(pnum, plr[plr[pnum].destParam1]._px, plr[plr[pnum].destParam1]._py, FALSE);
 	}
 
+	// TODO:
+	// 不止更新自己位置，还更新其他玩家位置？
 	if (plr[pnum].walkpath[0] != WALK_NONE) {
 		if (plr[pnum]._pmode == PM_STAND) {
 			if (pnum == myplr) {
@@ -3087,9 +3089,11 @@ void CheckNewPath(int pnum)
 
 		return;
 	}
+
+	// 当 walkpath[0] == WALK_NONE
 	if (plr[pnum].destAction == ACTION_NONE) {
 		return;
-	}
+	} 
 
 	if (plr[pnum]._pmode == PM_STAND) {
 		switch (plr[pnum].destAction) {
@@ -3101,6 +3105,8 @@ void CheckNewPath(int pnum)
 			i = plr[pnum].destParam1;
 			x = abs(plr[pnum].WorldX - monster[i]._mfutx);
 			y = abs(plr[pnum].WorldY - monster[i]._mfuty);
+			// TODO:
+			// 在一格之内 ? 远程攻击
 			if (x <= 1 && y <= 1) {
 				d = GetDirection(plr[pnum]._px, plr[pnum]._py, monster[i]._mfutx, monster[i]._mfuty);
 				if (monster[i].mtalkmsg && monster[i].mtalkmsg != QUEST_VILE14) {
