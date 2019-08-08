@@ -206,7 +206,7 @@ typedef struct PlayerStruct {
 	int _peflag;
 	int _plid;
 	int _pvid;
-	int _pSpell;
+	int _pSpell; // spelldata id
 	char _pSplType;
 	char _pSplFrom;
 	int _pTSpell;

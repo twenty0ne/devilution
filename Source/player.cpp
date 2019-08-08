@@ -3240,6 +3240,9 @@ void CheckNewPath(int pnum)
 		return;
 	}
 
+	// TODO:
+	// plr[pnum]._pAnimFrame > plr[myplr]._pAFNum
+	// 当前帧大于特定攻击帧？
 	if (plr[pnum]._pmode == PM_ATTACK && plr[pnum]._pAnimFrame > plr[myplr]._pAFNum) {
 		if (plr[pnum].destAction == ACTION_ATTACK) {
 			d = GetDirection(plr[pnum]._px, plr[pnum]._py, plr[pnum].destParam1, plr[pnum].destParam2);
