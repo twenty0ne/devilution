@@ -27,5 +27,8 @@ NetSendCmdXXX
 CheckNewPath:
 同样回去更新 pmode / PM_STAND, PM_WALK
 
+MakePlrPath:
+更新玩家寻路路径
+
 TODO:
 Q: plr.px/py WorldX, WorldY 有什么区别
