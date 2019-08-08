@@ -1524,6 +1524,8 @@ void StartSpell(int pnum, int d, int cx, int cy)
 	FixPlayerLocation(pnum, d);
 	SetPlayerOld(pnum);
 
+	// SETVAR:
+	// PM_SPELL
 	plr[pnum]._pVar1 = cx;
 	plr[pnum]._pVar2 = cy;
 	plr[pnum]._pVar4 = GetSpellLevel(pnum, plr[pnum]._pSpell);

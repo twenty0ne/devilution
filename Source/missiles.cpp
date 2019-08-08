@@ -241,6 +241,8 @@ int GetSpellLevel(int id, int sn)
 {
 	int result;
 
+	// TODO:
+	// 为什么其他玩家的返回1
 	if (id == myplr)
 		result = plr[id]._pISplLvlAdd + plr[id]._pSplLvl[sn];
 	else

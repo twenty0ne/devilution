@@ -290,9 +290,9 @@ typedef struct PlayerStruct {
 	int _pAFrames; // 攻击动画帧数
 	int _pAWidth;
 	int _pAFNum;
-	unsigned char *_pLAnim[8];
-	unsigned char *_pFAnim[8];
-	unsigned char *_pTAnim[8];
+	unsigned char *_pLAnim[8]; // spell - lighting
+	unsigned char *_pFAnim[8]; // spell - fire
+	unsigned char *_pTAnim[8]; // spell - magic
 	int _pSFrames;
 	int _pSWidth;
 	int _pSFNum;
@@ -321,7 +321,7 @@ typedef struct PlayerStruct {
 	unsigned __int64 _pISpells;
 	int _pIFlags; // item effect
 	int _pIGetHit;
-	char _pISplLvlAdd;
+	char _pISplLvlAdd; // buffer 添加 spell lvl
 	char _pISplCost;
 	int _pISplDur;
 	int _pIEnAc;
