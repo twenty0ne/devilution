@@ -30,5 +30,8 @@ CheckNewPath:
 MakePlrPath:
 更新玩家寻路路径
 
+操作：
+LeftMouseCmd
+
 TODO:
 Q: plr.px/py WorldX, WorldY 有什么区别
