@@ -33,5 +33,9 @@ MakePlrPath:
 操作：
 LeftMouseCmd
 
+diablo.GM_Game 是获取输入
+
 TODO:
 Q: plr.px/py WorldX, WorldY 有什么区别
+Q: 点击地面是如何移动的
+A: track_repeat_walk(LeftMouseDown), 处理特殊情况，比如 UI，点击物品敌人等之后，再处理移动

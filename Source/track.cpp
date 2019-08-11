@@ -35,6 +35,8 @@ void track_repeat_walk(BOOL rep)
 	sgbIsWalking = rep;
 	if (rep) {
 		sgbIsScrolling = 0;
+		// TODO:
+		// why -50 ?, 防止超过最大值
 		sgdwLastWalk = GetTickCount() - 50;
 		NetSendCmdLoc(TRUE, CMD_WALKXY, cursmx, cursmy);
 	} else if (sgbIsScrolling) {
