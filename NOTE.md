@@ -32,6 +32,7 @@ MakePlrPath:
 
 操作：
 LeftMouseCmd
+CheckCursMove - 更新鼠标移动位置
 
 diablo.GM_Game 是获取输入
 

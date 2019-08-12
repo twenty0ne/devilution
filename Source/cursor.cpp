@@ -14,8 +14,8 @@ int icursW;        // weak
 char pcursitem;    // weak
 char pcursobj;     // weak
 char pcursplr;     // weak
-int cursmx;
-int cursmy;
+int cursmx; // 鼠标转换到地图 x
+int cursmy; // 鼠标转到到地图 y
 int pcurstemp; // weak
 int pcurs;        // idb
 
@@ -177,6 +177,7 @@ void CheckCursMove()
 	sx = MouseX;
 	sy = MouseY;
 
+	// 根据 flag 限定范围
 	if(chrflag || questlog) {
 		if(sx >= 160) {
 			sx -= 160;
@@ -198,6 +199,8 @@ void CheckCursMove()
 		sy >>= 1;
 	}
 
+	// TODO:
+	// ? 
 	sx -= ScrollInfo._sxoff;
 	sy -= ScrollInfo._syoff;
 
@@ -219,6 +222,8 @@ void CheckCursMove()
 		sy = 480;
 	}
 
+	// TODO:
+	// ?
 	tx = sx >> 6;
 	ty = sy >> 5;
 	px = sx & 0x3F;
