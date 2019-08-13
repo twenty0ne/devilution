@@ -222,12 +222,15 @@ void CheckCursMove()
 		sy = 480;
 	}
 
-	// TODO:
-	// ?
-	tx = sx >> 6;
-	ty = sy >> 5;
+	// 转化到 tile 位置
+	// tx 是商, px 是余数
+	// 比如 sx = 64, tx = 1, px = 0
+	tx = sx >> 6; // sx / 64 = (0, 10)
+	ty = sy >> 5; // sy / 32 = (0, 15)
 	px = sx & 0x3F;
 	py = sy & 0x1F;
+	// TODO:
+	// ?
 	mx = ViewX + tx + ty - (zoomflag ? 10 : 5);
 	my = ViewY + ty - tx;
 
