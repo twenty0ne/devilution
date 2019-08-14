@@ -246,6 +246,7 @@ void CheckCursMove()
 	if(mx < 0) {
 		mx = 0;
 	}
+	// MAXDUNX - 地牢的宽度
 	if(mx >= MAXDUNX) {
 		mx = MAXDUNX - 1;
 	}
@@ -297,6 +298,7 @@ void CheckCursMove()
 		return;
 	}
 
+	// 首先检查是否指向 monster
 	if(leveltype != DTYPE_TOWN) {
 		if(pcurstemp != -1) {
 			if(!flipflag && dMonster[mx + 2][my + 1] != 0 && dFlags[mx + 2][my + 1] & DFLAG_LIT) {

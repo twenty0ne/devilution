@@ -16,6 +16,7 @@
 #define MAX_SPELLS				37
 
 #define MAXDEAD					31
+// dun - Dungeon 地牢
 #define MAXDUNX					112
 #define MAXDUNY					112
 #define MAXITEMS				127
