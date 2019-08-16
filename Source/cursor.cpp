@@ -300,6 +300,7 @@ void CheckCursMove()
 
 	// 首先检查是否指向 monster
 	if(leveltype != DTYPE_TOWN) {
+		// 如果上一次选中了 monster ，优先判断这次选中的还是不是他
 		if(pcurstemp != -1) {
 			if(!flipflag && dMonster[mx + 2][my + 1] != 0 && dFlags[mx + 2][my + 1] & DFLAG_LIT) {
 				mi = dMonster[mx + 2][my + 1] > 0 ? dMonster[mx + 2][my + 1] - 1 : -(dMonster[mx + 2][my + 1] + 1);
@@ -369,6 +370,7 @@ void CheckCursMove()
 				return;
 			}
 		}
+		// 如果上一次没有选中 monster
 		if(!flipflag && dMonster[mx + 2][my + 1] != 0 && dFlags[mx + 2][my + 1] & DFLAG_LIT) {
 			mi = dMonster[mx + 2][my + 1] > 0 ? dMonster[mx + 2][my + 1] - 1 : -(dMonster[mx + 2][my + 1] + 1);
 			if(monster[mi]._mhitpoints >> 6 > 0 && monster[mi].MData->mSelFlag & 4) {

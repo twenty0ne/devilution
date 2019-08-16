@@ -1465,13 +1465,15 @@ typedef enum {
 	UMT_BUTCHER   = 9,
 } _uniq_monsterid;
 
+// flag 可理解为 state 之外的小状态
+// 而且 flag 是可以叠加的
 typedef enum monster_flag {
 	MFLAG_HIDDEN          = 0x01,
 	MFLAG_LOCK_ANIMATION  = 0x02,
 	MFLAG_ALLOW_SPECIAL   = 0x04,
 	MFLAG_NOHEAL          = 0x08,
 	MFLAG_TARGETS_MONSTER = 0x10,
-	MFLAG_GOLEM           = 0x20,
+	MFLAG_GOLEM           = 0x20, // 石化
 	MFLAG_QUEST_COMPLETE  = 0x40,
 	MFLAG_KNOCKBACK       = 0x80,
 	MFLAG_SEARCH          = 0x100,
