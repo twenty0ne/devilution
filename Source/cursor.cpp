@@ -298,6 +298,8 @@ void CheckCursMove()
 		return;
 	}
 
+	// TODO:
+	// mx, my 是如何计算的, 是否是玩家面向的方向
 	// 首先检查是否指向 monster
 	if(leveltype != DTYPE_TOWN) {
 		// 如果上一次选中了 monster ，优先判断这次选中的还是不是他
@@ -461,6 +463,7 @@ void CheckCursMove()
 		}
 	}
 
+	// 判断是否选中其他 player
 	if(pcursmonst == -1) {
 		if(!flipflag && dPlayer[mx + 1][my] != 0) {
 			bv = dPlayer[mx + 1][my] > 0 ? dPlayer[mx + 1][my] - 1 : -(dPlayer[mx + 1][my] + 1);
@@ -486,6 +489,7 @@ void CheckCursMove()
 				pcursplr = bv;
 			}
 		}
+		// 如果选中了死亡的 玩家
 		if(dFlags[mx][my] & DFLAG_DEAD_PLAYER) {
 			for(i = 0; i < MAX_PLRS; i++) {
 				if(plr[i].WorldX == mx && plr[i].WorldY == my && i != myplr) {
@@ -495,6 +499,7 @@ void CheckCursMove()
 				}
 			}
 		}
+		// 如果使用复活
 		if(pcurs == CURSOR_RESURRECT) {
 			for(xx = -1; xx < 2; xx++) {
 				for(yy = -1; yy < 2; yy++) {
@@ -519,6 +524,7 @@ void CheckCursMove()
 			}
 		}
 	}
+	// 判断是否选中 object
 	if(pcursmonst == -1 && pcursplr == -1) {
 		if(!flipflag && dObject[mx + 1][my] != 0) {
 			bv = dObject[mx + 1][my] > 0 ? dObject[mx + 1][my] - 1 : -(dObject[mx + 1][my] + 1);
@@ -553,6 +559,7 @@ void CheckCursMove()
 			}
 		}
 	}
+	// 判断是否选中 item
 	if(pcursplr == -1 && pcursobj == -1 && pcursmonst == -1) {
 		if(!flipflag && dItem[mx + 1][my] > 0) {
 			bv = dItem[mx + 1][my] - 1;

@@ -36,6 +36,8 @@ CheckCursMove - 更新鼠标移动位置
 
 diablo.GM_Game 是获取输入
 
+CheckCursMove 判断选中的顺序：monster > player > object > item
+
 TODO:
 Q: plr.px/py WorldX, WorldY 有什么区别
 Q: 点击地面是如何移动的
