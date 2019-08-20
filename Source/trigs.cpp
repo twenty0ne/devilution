@@ -329,7 +329,10 @@ BOOL ForceTownTrig()
 
 	for (i = 0; TownDownList[i] != -1; i++) {
 		if (dPiece[cursmx][cursmy] == TownDownList[i]) {
+			// 地牢
 			strcpy(infostr, "Down to dungeon");
+			// TODO:
+			// 25， 29 来历？
 			cursmx = 25;
 			cursmy = 29;
 			return TRUE;
@@ -339,6 +342,7 @@ BOOL ForceTownTrig()
 	if (townwarps[0]) {
 		for (j = 0; TownWarp1List[j] != -1; j++) {
 			if (dPiece[cursmx][cursmy] == TownWarp1List[j]) {
+				// 地下墓穴
 				strcpy(infostr, "Down to catacombs");
 				cursmx = 49;
 				cursmy = 21;
@@ -654,6 +658,7 @@ void CheckTrigForce()
 {
 	trigflag = FALSE;
 
+	// TODO: ?
 	if(MouseY > 352 - 1) {
 		return;
 	}
@@ -693,6 +698,8 @@ void CheckTrigForce()
 		}
 	}
 
+	// TODO:
+	// ?
 	if(trigflag) {
 		ClearPanel();
 	}
