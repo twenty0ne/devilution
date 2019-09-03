@@ -38,6 +38,10 @@ diablo.GM_Game 是获取输入
 
 CheckCursMove 判断选中的顺序：monster > player > object > item
 
+主要的网络请求
+SNetSendMessage
+SNetReceiveMessage
+
 TODO:
 Q: plr.px/py WorldX, WorldY 有什么区别
 Q: 点击地面是如何移动的

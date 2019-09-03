@@ -16,6 +16,7 @@ void track_process()
 	if (plr[myplr]._pVar8 <= 6 && plr[myplr]._pmode != PM_STAND)
 		return;
 
+	// 如果鼠标与目标位置不一致
 	if (cursmx != plr[myplr]._ptargx || cursmy != plr[myplr]._ptargy) {
 		DWORD tick = GetTickCount();
 		if ((int)(tick - sgdwLastWalk) >= 300) {
