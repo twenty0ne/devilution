@@ -106,6 +106,7 @@ void multi_send_packet(void *packet, BYTE dwSize)
 	TPkt pkt;
 
 	NetRecvPlrData(&pkt);
+	// 19 = sizeof(TPktHdr)
 	pkt.hdr.wLen = dwSize + 19;
 	memcpy(pkt.body, packet, dwSize);
 	if (!SNetSendMessage(myplr, &pkt.hdr, pkt.hdr.wLen))
@@ -148,6 +149,7 @@ void NetSendHiPri(BYTE *pbMsg, BYTE bLen)
 		v7 = sync_all_monsters(v6, size);
 		v8 = gdwNormalMsgSize - v7;
 		pkt.hdr.wLen = v8;
+		// why playerID == -2
 		if (!SNetSendMessage(-2, &pkt.hdr, v8))
 			nthread_terminate_game("SNetSendMessage");
 	}
@@ -467,6 +469,7 @@ void multi_process_network_packets()
 				plr[v3]._pownerx = (unsigned char)pkt->px;
 				v5 = &v1->py;
 				plr[v3]._pownery = (unsigned char)v1->py;
+				// 如果是其他玩家角色
 				if (!v4) {
 					v4 = gbBufferMsgs == 1;
 					plr[v3]._pHitPoints = v1->php;
@@ -474,6 +477,7 @@ void multi_process_network_packets()
 					plr[v3]._pBaseStr = (unsigned char)v1->bstr;
 					plr[v3]._pBaseMag = (unsigned char)v1->bmag;
 					plr[v3]._pBaseDex = (unsigned char)v1->bdex;
+					// 其他玩家存活
 					if (!v4 && plr[v3].plractive && plr[v3]._pHitPoints) {
 						if (currlevel != plr[v3].plrlevel || plr[v3]._pLvlChanging) {
 							plr[v3].WorldX = (unsigned char)v1->px;
@@ -499,6 +503,7 @@ void multi_process_network_packets()
 								plr[v10]._py = (unsigned char)*v5;
 								dPlayer[plr[v10].WorldX][plr[v10].WorldY] = arglist[0] + 1;
 							}
+							// 如果位置不同
 							v11 = abs(plr[*(_DWORD *)arglist]._px - plr[*(_DWORD *)arglist].WorldX);
 							v12 = abs(plr[*(_DWORD *)arglist]._py - plr[*(_DWORD *)arglist].WorldY);
 							v13 = *(_DWORD *)arglist;
@@ -511,6 +516,7 @@ void multi_process_network_packets()
 						}
 					}
 				}
+				// 19 = sizeof(TPktHdr)
 				multi_handle_all_packets(*(int *)arglist, (TPkt *)&v2[1], len - 19);
 			}
 			//_LOBYTE(v15) = SNetReceiveMessage((int *)arglist, (char **)&pkt, &len);
