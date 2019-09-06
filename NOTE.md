@@ -42,6 +42,11 @@ CheckCursMove 判断选中的顺序：monster > player > object > item
 SNetSendMessage
 SNetReceiveMessage
 
+网络建主流程：
+> NetInit 
+> plr[myplr].plractive = TRUE 
+> 
+
 TODO:
 Q: plr.px/py WorldX, WorldY 有什么区别
 Q: 点击地面是如何移动的

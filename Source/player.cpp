@@ -3420,6 +3420,7 @@ void ProcessPlayers()
 
 	ValidatePlayer();
 
+	// 即使是单机，也会遍历所有 player，但是其他玩家 plractive = false
 	for (pnum = 0; pnum < MAX_PLRS; pnum++) {
 		if (plr[pnum].plractive && currlevel == plr[pnum].plrlevel && (pnum == myplr || !plr[pnum]._pLvlChanging)) {
 			CheckCheatStats(pnum);

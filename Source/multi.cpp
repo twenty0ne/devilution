@@ -308,6 +308,8 @@ void multi_net_ping()
 	sglTimeoutStart = GetTickCount();
 }
 
+// TODO:
+// ?
 int multi_handle_delta()
 {
 	int i, recieved;
@@ -358,6 +360,7 @@ void multi_mon_seeds()
 	DWORD l;
 
 	sgdwGameLoops++;
+	// 右移 8 位
 	l = _rotr(sgdwGameLoops, 8);
 	for (i = 0; i < 200; i++)
 		monster[i]._mAISeed = l + i;
