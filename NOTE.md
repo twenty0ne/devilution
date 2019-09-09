@@ -46,6 +46,7 @@ SNetReceiveMessage
 > NetInit 
 > plr[myplr].plractive = TRUE 
 > 
+> multi_player_left_msg -> plr[pnum].plractive = FALSE
 
 TODO:
 Q: plr.px/py WorldX, WorldY 有什么区别

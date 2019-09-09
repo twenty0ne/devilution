@@ -740,6 +740,8 @@ BOOL NetInit(BOOL bSinglePlayer, BOOL *pfExitProgram)
 		gbSomebodyWonGameKludge = FALSE;
 		nthread_send_and_recv_turn(0, 0);
 		SetupLocalCoords();
+		// TODO:
+		// -2 ?
 		multi_send_pinfo(-2, CMD_SEND_PLRINFO);
 		gbActivePlayers = 1;
 		plr[myplr].plractive = TRUE;

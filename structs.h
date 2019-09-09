@@ -1358,6 +1358,7 @@ typedef struct _SNETVERSIONDATA {
 // pack
 //////////////////////////////////////////////////
 
+// 对齐方式
 #pragma pack(push, 1)
 typedef struct PkItemStruct {
 	DWORD iSeed;
