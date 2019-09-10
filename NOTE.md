@@ -45,7 +45,7 @@ SNetReceiveMessage
 网络建主流程：
 > NetInit 
 > plr[myplr].plractive = TRUE 
-> 
+> multi_init_single / multi_init_multi
 > multi_player_left_msg -> plr[pnum].plractive = FALSE
 
 TODO:

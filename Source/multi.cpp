@@ -869,6 +869,7 @@ BOOL multi_init_multi(_SNETPROGRAMDATA *client_info, _SNETPLAYERDATA *user_info,
 		byte_678640 = 1;
 	}
 
+	// playerId：网络返回的 ？
 	if ((DWORD)playerId >= MAX_PLRS) {
 		return FALSE;
 	} else {
