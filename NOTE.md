@@ -43,6 +43,7 @@ SNetSendMessage
 SNetReceiveMessage
 
 网络建主流程：
+网络采用暴雪网络库 Storm，无论单机和联机都按照网络结构走，这样目的是为了逻辑处理的统一
 > NetInit 
 > plr[myplr].plractive = TRUE 
 > multi_init_single / multi_init_multi
