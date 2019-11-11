@@ -432,6 +432,7 @@ void multi_check_drop_player()
 	}
 }
 
+// TODO: 为什么不采用单独的网络线程接收消息?
 void multi_process_network_packets()
 {
 	//int v0; // eax

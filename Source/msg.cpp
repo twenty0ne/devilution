@@ -825,6 +825,7 @@ void NetSendCmdGItem2(BOOL usonly, BYTE bCmd, BYTE mast, BYTE pnum, TCmdGItem *p
 	ticks = GetTickCount();
 	if (!cmd.dwTime) {
 		cmd.dwTime = ticks;
+	// TODO: why 5000 ?
 	} else if (ticks - cmd.dwTime > 5000) {
 		return;
 	}
@@ -1471,12 +1472,14 @@ int On_GETITEM(TCmdGItem *pCmd, int pnum)
 	return sizeof(*pCmd);
 }
 
+// TODO: ?
 BOOL delta_get_item(TCmdGItem *pI, BYTE bLevel)
 {
 	BOOL result;
 	TCmdPItem *pD;
 	int i;
 
+	// 如果不是单人游戏
 	if (gbMaxPlayers != 1) {
 		for (i = 0; i < MAXITEMS; i++) {
 			pD = &sgLevels[bLevel].item[i];
@@ -1567,6 +1570,8 @@ int On_AGETITEM(TCmdGItem *pCmd, int pnum)
 	else {
 		FindGetItem(pCmd->wIndx, pCmd->wCI, pCmd->dwSeed);
 		if (delta_get_item(pCmd, pCmd->bLevel)) {
+			// TODO:
+			// 当前关卡或玩家？why ||
 			if ((currlevel == pCmd->bLevel || pCmd->bPnum == myplr) && pCmd->bMaster != myplr) {
 				if (pCmd->bPnum == myplr) {
 					if (currlevel != pCmd->bLevel) {
