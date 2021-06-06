@@ -1814,8 +1814,6 @@ void DropHalfPlayersGold(int pnum)
 		app_fatal("DropHalfPlayersGold: illegal player %d", pnum);
 	}
 
-	// TODO:
-	// why /2
 	hGold = plr[pnum]._pGold >> 1;
 	for (i = 0; i < MAXBELTITEMS && hGold > 0; i++) {
 		if (plr[pnum].SpdList[i]._itype == ITYPE_GOLD && plr[pnum].SpdList[i]._ivalue != 5000) {
@@ -2366,6 +2364,7 @@ BOOL PlrHitMonst(int pnum, int m)
 		hit = 0;
 	}
 
+	// FORMULA:
 	hper = (plr[pnum]._pDexterity >> 1) + plr[pnum]._pLevel + 50 - (monster[m].mArmorClass - plr[pnum]._pIEnAc);
 	if (plr[pnum]._pClass == PC_WARRIOR) {
 		hper += 20;
@@ -2429,6 +2428,8 @@ BOOL PlrHitMonst(int pnum, int m)
 			dam *= 3;
 		}
 
+		// TODO:
+		// WHY
 		skdam = dam << 6;
 		if (pnum == myplr) {
 			monster[m]._mhitpoints -= skdam;

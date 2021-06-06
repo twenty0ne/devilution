@@ -1642,6 +1642,8 @@ void MonstStartKill(int i, int pnum, BOOL sendmsg)
 	SetRndSeed(monster[i]._mRndSeed);
 	if (QuestStatus(QTYPE_GARB) && monster[i].mName == UniqMonst[UMT_GARBUD].mName) {
 		CreateTypeItem(monster[i]._mx + 1, monster[i]._my + 1, TRUE, 4, FALSE, TRUE, FALSE);
+	// TODO:
+	// why > 3 ?
 	} else if (i > 3) {
 		SpawnItem(i, monster[i]._mx, monster[i]._my, sendmsg);
 	}

@@ -58,7 +58,7 @@ typedef struct ItemDataStruct {
 	int iRnd;
 	char iClass;
 	char iLoc;
-	int iCurs;
+	int iCurs; // grapic id
 	char itype;
 	char iItemId;
 	char *iName;
@@ -482,6 +482,7 @@ typedef struct AnimStruct {
 	int Rate;
 } AnimStruct;
 
+// MonsterData 是 config 配置
 typedef struct MonsterData {
 	int width;
 	int mImage;
